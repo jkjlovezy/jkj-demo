@@ -27,6 +27,23 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>com.focustech.silk</groupId>
+      <artifactId>order-center-api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.focustech.utils</groupId>
+      <artifactId>mic_encrypt</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.72</version>
+    </dependency>
     <!--mapstruct-->
     <dependency>
       <groupId>org.mapstruct</groupId>
