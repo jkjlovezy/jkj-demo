@@ -23,10 +23,9 @@ public class UserService {
     LocalValidatorFactoryBean validatorFactoryBean;
 
     public void addUser(User user){
-        validatorFactoryBean.setValidationMessageSource(resourceBundleMessageSource());
-        Set<ConstraintViolation<User>> validateSet = validatorFactoryBean.validate(user,new Class[0]);
-//        Validation.buildDefaultValidatorFactory().getMessageInterpolator().
-//        Set<ConstraintViolation<User>> validateSet = Validation.buildDefaultValidatorFactory().getValidator().validate(user,new Class[0]);
+        /*validatorFactoryBean.setValidationMessageSource(resourceBundleMessageSource());
+        Set<ConstraintViolation<User>> validateSet = validatorFactoryBean.validate(user,new Class[0]);*/
+        Set<ConstraintViolation<User>> validateSet = Validation.buildDefaultValidatorFactory().getValidator().validate(user,new Class[0]);
         if(!CollectionUtils.isEmpty(validateSet)){
             for(ConstraintViolation<User> violation:validateSet ){
                 violation.getMessage();
@@ -38,6 +37,7 @@ public class UserService {
                     .map(ConstraintViolation::getMessage)
                     .reduce((m1, m2) -> m1 + "；" + m2)
                     .orElse("参数输入有误！");
+            System.out.println("校验有误:"+messages);
 //            throw new IllegalArgumentException(messages);
         }
     }

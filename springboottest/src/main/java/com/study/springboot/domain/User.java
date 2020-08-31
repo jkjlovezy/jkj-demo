@@ -14,7 +14,7 @@ public class User {
     @OnlyEn(key = "user.username.onlyen",message = "只能输入英文字符")
     private String userName;
 
-    @EnumValidate(SexEnum.class)
+    @EnumValidate(value = SexEnum.class)
     private Integer sex;
 
     public Long getUserId() {
