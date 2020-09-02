@@ -13,13 +13,11 @@ import javax.validation.Payload;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})
-@Constraint(validatedBy = EnumValidator.class)
-public @interface EnumValidate {
-    Class<?> value();
+@Constraint(validatedBy = NumberPatternValidator.class)
+public @interface NumberPattern {
+    String regexp();
 
-    String property() default "value";
-
-    String message() default "传参有误，请输入正确的枚举值";
+    String message() default "{javax.validation.constraints.Pattern.message}";
 
     Class<?>[] groups() default {};
 

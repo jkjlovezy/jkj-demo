@@ -13,6 +13,11 @@ public class ApiBusiException extends RuntimeException {
         this.errorMsg = apiBusiCodeEnum.getDesc();
     }
 
+    public ApiBusiException(String errorCode,String errorMsg){
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
     public String getErrorCode() {
         return errorCode;
     }
