@@ -1,14 +1,14 @@
 package com.study.springboot.domain;
 
+import java.util.Date;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import com.study.springboot.enums.SexEnum;
-import com.study.springboot.validate.EnumValidate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.study.springboot.validate.NumberPattern;
 import com.study.springboot.validate.OnlyEn;
 
@@ -30,6 +30,11 @@ public class User{
 
     @Valid
     private Person person;
+
+    private Date birthday;
+
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH")
+    private Date birthday2;
 
     public Long getUserId() {
         return userId;
@@ -69,5 +74,21 @@ public class User{
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getBirthday2() {
+        return birthday2;
+    }
+
+    public void setBirthday2(Date birthday2) {
+        this.birthday2 = birthday2;
     }
 }

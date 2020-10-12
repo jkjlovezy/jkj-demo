@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.7.RELEASE</version>
+  </parent>
+
+  <packaging>pom</packaging>
+  <modules>
+    <module>sw_test_provider1</module>
+    <module>sw_test_provider2</module>
+    <module>sw_test_api</module>
+  </modules>
+  <groupId>com.study</groupId>
+  <artifactId>sw_test_parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+    <phenix.version>2.2.6</phenix.version>
+    <phenix-spring-boot.version>1.0.1</phenix-spring-boot.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>com.focus</groupId>
+        <artifactId>candy</artifactId>
+        <version>${phenix.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.focus</groupId>
+        <artifactId>phenix-spring-boot-starter</artifactId>
+        <version>${phenix-spring-boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.26</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.16.16</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.skywalking</groupId>
+        <artifactId>apm-toolkit-logback-1.x</artifactId>
+        <version>8.1.0</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <!--<dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+  </dependencies>-->
+</project>

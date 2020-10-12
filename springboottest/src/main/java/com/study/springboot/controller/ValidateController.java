@@ -1,5 +1,8 @@
 package com.study.springboot.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,9 +28,12 @@ public class ValidateController {
     IUserService userServiceImpl;
 
     @PostMapping("/user/add")
-    public ApiResult<Void> addUser(@RequestBody User user) {
+    public ApiResult<User> addUser(@RequestBody User user,String timeZone) {
         userService.addUser(user);
-        return ApiResult.success();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone(timeZone));
+        System.out.println(timeZone+":\t"+sdf.format(user.getBirthday()));
+        return ApiResult.success(user);
     }
 
     @PostMapping("/user/add2")

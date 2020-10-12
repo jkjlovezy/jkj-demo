@@ -5,6 +5,9 @@ import java.io.IOException;
 
 public class Main1 {
     public static void main(String[] args) throws IOException {
+
+        System.out.println(String.format("%s:%s:%s","gateway","openapi.domain.com","/ad/ads"));
+
         System.out.println(Main1.class.getClassLoader());
         System.out.println(Thread.currentThread().getContextClassLoader());
         System.out.println(new File("1.txt").getCanonicalPath());
