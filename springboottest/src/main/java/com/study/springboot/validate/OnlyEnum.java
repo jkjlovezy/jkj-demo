@@ -13,13 +13,13 @@ import javax.validation.Payload;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})
-@Constraint(validatedBy = EnumValidator.class)
-public @interface EnumValidate {
+@Constraint(validatedBy = OnlyEnumValidator.class)
+public @interface OnlyEnum {
     Class<?> value();
 
     String property() default "value";
 
-    String message() default "传参有误，请输入正确的枚举值";
+    String message() default "invalid enum value";
 
     Class<?>[] groups() default {};
 

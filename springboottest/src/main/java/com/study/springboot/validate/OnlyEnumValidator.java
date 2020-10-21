@@ -12,12 +12,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @Slf4j
-public class EnumValidator implements ConstraintValidator<EnumValidate, Object>, Annotation {
+public class OnlyEnumValidator implements ConstraintValidator<OnlyEnum, Object>, Annotation {
 
     private List<Object> values = new ArrayList<>();
 
     @Override
-    public void initialize(EnumValidate enumValidate) {
+    public void initialize(OnlyEnum enumValidate) {
         Class<?> clz = enumValidate.value();
         String property = enumValidate.property();
         try {
@@ -30,7 +30,6 @@ public class EnumValidator implements ConstraintValidator<EnumValidate, Object>,
             }
         } catch (NoSuchFieldException e) {
             log.error(e.getMessage(), e);
-            log.error("枚举校验器初始化失败：枚举对象{}缺少属性{}", clz.getName(), property);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

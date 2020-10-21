@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 @Target({ METHOD, FIELD, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Documented
-public @interface ValidPt {
+public @interface ParamValid {
 }

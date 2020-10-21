@@ -11,17 +11,12 @@ import org.springframework.stereotype.Component;
 
 import com.study.springboot.validate.BaseParamValidator;
 
-/**
- * 日志切面
- *
- * @author xiapengpeng
- */
 @Component
 @Aspect
 @Slf4j
 public class ValidateParamAspect {
 
-    @Pointcut("@annotation(com.study.springboot.enums.ValidPt)")
+    @Pointcut("@annotation(com.study.springboot.enums.ParamValid)")
     public void validAnnotationPointcut() {
     }
 

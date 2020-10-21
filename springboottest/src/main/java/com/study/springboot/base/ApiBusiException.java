@@ -14,6 +14,7 @@ public class ApiBusiException extends RuntimeException {
     }
 
     public ApiBusiException(String errorCode,String errorMsg){
+        super(errorMsg);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
     }

@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import com.alibaba.fastjson.JSON;
 import com.study.springboot.domain.User;
-import com.study.springboot.enums.ValidPt;
+import com.study.springboot.enums.ParamValid;
 import com.study.springboot.validate.BaseParamValidator;
 
 
@@ -18,42 +19,28 @@ public class UserService {
     @Autowired
     LocalValidatorFactoryBean validatorFactoryBean;
 
+    //进行校验
     public void addUser(User user) {
         BaseParamValidator.validate(user);
-     /*   Set<ConstraintViolation<User>> validateSet = Validation.buildDefaultValidatorFactory().getValidator().validate(user,new Class[0]);
-        if(!CollectionUtils.isEmpty(validateSet)){
-            for(ConstraintViolation<User> violation:validateSet ){
-                System.out.println(violation.getMessage());
-                System.out.println(violation.getConstraintDescriptor().getAnnotation());
-                System.out.println(violation.getInvalidValue());
-                System.out.println(violation.getMessageTemplate());;
-            }
-            String messages = validateSet.stream()
-                    .map(v-> v.getPropertyPath()+v.getMessage())
-                    .reduce((m1, m2) -> m1 + "；" + m2)
-                    .orElse("参数输入有误！");
-            System.out.println("校验有误:"+messages);
-        }*/
+        System.out.println("UserService.addUser1:" + JSON.toJSONString(user));
     }
 
-
-    @ValidPt
+    //进行校验
+    @ParamValid
     public void addUser2(@NotNull Long userId, @NotNull String userName) {
-        System.out.println("service:" + userId + userName);
-     /*   Set<ConstraintViolation<User>> validateSet = Validation.buildDefaultValidatorFactory().getValidator().validate(user,new Class[0]);
-        if(!CollectionUtils.isEmpty(validateSet)){
-            for(ConstraintViolation<User> violation:validateSet ){
-                System.out.println(violation.getMessage());
-                System.out.println(violation.getConstraintDescriptor().getAnnotation());
-                System.out.println(violation.getInvalidValue());
-                System.out.println(violation.getMessageTemplate());;
-            }
-            String messages = validateSet.stream()
-                    .map(v-> v.getPropertyPath()+v.getMessage())
-                    .reduce((m1, m2) -> m1 + "；" + m2)
-                    .orElse("参数输入有误！");
-            System.out.println("校验有误:"+messages);
-        }*/
+        System.out.println("UserService.addUser2:" + userId + userName);
+    }
+
+    //进行校验
+    @ParamValid
+    public void addUser3(@Valid User user) {
+        System.out.println("UserService.addUser3:" + JSON.toJSONString(user));
+    }
+
+    //没有进行校验，因为方法发参数上没有加@Valid注解
+    @ParamValid
+    public void addUser4(User user) {
+        System.out.println("UserService.addUser3:" + JSON.toJSONString(user));
     }
 
 
