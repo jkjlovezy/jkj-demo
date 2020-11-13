@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.study.provider1.service.UserService;
+import com.study.sw.api.domain.CustomException;
 
 @RestController
 @Slf4j
@@ -19,7 +20,15 @@ public class UserController {
     public String getUser(Integer userId) {
         sleep(userId);
         log.info("UserController.getUser: {}", userId);
-        return userService.getUser(userId);
+        try {
+            return userService.getUser(userId);
+        }catch (CustomException e){
+            log.info("provider service customException. {}",e.getMessage());
+            return null;
+        }catch (Exception e){
+            log.info("provider service exception. {}",e.getMessage());
+            return null;
+        }
     }
 
     @GetMapping("/a/getUser2")

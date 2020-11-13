@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PrintHeaderController {
 
+    @GetMapping("/test/printuri")
+    public String printURI(HttpServletRequest request){
+        return request.getScheme()+"\n"+request.getRequestURL().toString()+"\n"+request.getRequestURI();
+    }
+
     @GetMapping("/test/printheader")
     public String printHeader(HttpServletRequest request) {
         Map<String, String[]> paramMap = request.getParameterMap();

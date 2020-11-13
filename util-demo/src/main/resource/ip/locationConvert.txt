@@ -1,0 +1,697 @@
+Akesu Area,117961
+Alabama,88471
+Alaska,88481
+Aletai Area,118001
+Ali Area,117131
+Alxa League,108591
+Anhui,89261
+Anhui_Suzhou,90201
+Ankang,113501
+Anqing,89271
+Anshan,107411
+Anyang,98641
+Arizona,88501
+Arkansas,88511
+Baicheng,104401
+Baise,94351
+Baisha,96541
+Baoding,96831
+Baoji,113551
+Baoshan,119081
+Baoting,96551
+Baotou,108681
+Bayannaoer,108671
+Bayinguoleng,118051
+Bazhong,114931
+Beijing,90511
+Beijing,90501
+Bengbu,89311
+Benxi,107491
+Bijie,95601
+Binzhou,110561
+Bortala,118071
+Bozhou,89361
+California,88521
+California,88521
+Cangzhou,96901
+Changchun,104461
+Changde,103141
+Changdu,117251
+Changhua County,125841
+Changji,118131
+Changsha,103061
+Changzhi,112211
+Changzhou,105091
+Chaoyang,107571
+Chaozhou,92691
+Chengde,96951
+Chengdu,115011
+Chengmai,96571
+Chenzhou,103171
+Chiayi City,122821
+Chiayi County,122851
+Chifeng,108791
+China,89251
+Chizhou,89401
+Chongqing,121521
+Chongqing,121581
+Chongzuo,94461
+Chuxiong,119151
+Chuzhou,89451
+Colorado,88651
+Connecticut,88661
+Da Tong,112231
+Dali,119181
+Dalian,107611
+Dandong,107701
+Danzhou,96581
+Daqing,100491
+Daxing\'anling,100551
+Dazhou,115131
+Dehong,119211
+Delaware,88671
+Deyang,115251
+Dingan,96591
+Dingxi,91741
+Diqing,119231
+Dongfang,96601
+Dongguan,92741
+Dongying,110731
+Enshi,101991
+Ezhou,101951
+Fangchenggang,94551
+Five Fingers Group,96761
+Florida,88711
+Foshan,92801
+Fujian_Fuzhou,90811
+Fujian,90701
+Fushun,107781
+Fuxin,107841
+Fuyang,89571
+Gannan,91791
+Gansu,91641
+Ganzhou,106491
+Ganzi,115321
+Georgia,88721
+GuangAn,115371
+Guangdong,92661
+Guangxi,94331
+Guangxi_Yulin,95521
+Guangyuan,115391
+Guangzhou,92891
+Guigang,94621
+Guilin,94661
+Guiyang,95771
+Guizhou,95571
+Guoluo,110171
+Guyuan,109721
+Haibei,110181
+Haidong,110191
+Haikou,96611
+Hainan,96531
+Hainan,96531
+Hami,118221
+Handan,97251
+Hangzhou,120631
+Hanzhoung,113781
+Harbin,100631
+Hawaii,88741
+Hebei,96771
+Hebi,98841
+Hechi,94751
+Hefei,89661
+Hegang,100741
+Heihe,100811
+Heilongjiang,100401
+Heilongjiang_Yichun,101621
+Henan,98631
+Hengshui,97321
+Hengyang,103341
+Hetian Area,118281
+Heyuan,93041
+Heze,110841
+Hezhou,94771
+Hohhot,109031
+Hong Kong,122001
+Honghe,119351
+Hsinchu City,125321
+Hsinchu County,125361
+Huaian,105281
+Huaibei,89741
+Huaihua,103441
+Huainan,89781
+Hualien County,122601
+Huanggang,102091
+Huangnan,110241
+Huangshi,102121
+Hubei,101841
+Huizhou,93111
+Huludao,107941
+Hulun Buir,109081
+Hunan,103001
+Huzhou,120721
+Idaho,88751
+Illinois,88761
+Indiana,88771
+Indiana,88771
+Inner Mongolia,108561
+Iowa,88781
+JiAn,106581
+JiNan,110891
+Jiamusi,100961
+Jiangxi_Fuzhou,106461
+Jiangmen,93141
+Jiangsu,105051
+Jiangsu_Suzhou,105741
+Jiangsu_Taizhou,105881
+Jiangxi,106291
+Jiangxi_Yichun,107241
+Jiaozuo,98961
+Jiaxing,120761
+Jiayuguan,91941
+Jieyang,93211
+Jilin,104381
+Jilin City,104651
+Jinchang,91951
+Jincheng,112591
+Jingdezhen,106661
+Jingmen,102221
+Jingzhou,102251
+Jinhua,120821
+Jining,110971
+Jinzhong,112611
+Jinzhou,108011
+Jiujiang,106701
+Jiuquan,92351
+Jixi,100881
+Jiyuan,98941
+Kaifeng,99021
+Kansas,88791
+Kaohsiung City,122211
+Karamay,118381
+Kashi Area,118361
+Keelung City,122741
+Kentucky,88801
+Kinmen County,123041
+Kizilsu Kirghiz,118431
+Kunming,119501
+Laiwu,111101
+Langfang,97481
+Lanzhou,92051
+Leshan,115681
+Lhasa,117491
+Liangshan,111181
+Lianyungang,105441
+Liaocheng,111191
+Liaoning,107401
+Liaoyang,108071
+Liaoyuan,104751
+Lijiang,119571
+Lincang,119601
+Linfen,112681
+Lingao,96671
+Lingshui,96681
+Linxia,92151
+Linyi,111241
+Linzhi,117551
+Lishui,120901
+Liupanshui,95961
+Liuzhou,94931
+Longnan,92201
+Longyan,90991
+Los Angeles,88631
+Loudi,103671
+Louisiana,88811
+Luan,89991
+Luohe,99261
+Luoyang,99191
+Luzhou,115831
+Lvliang,112781
+Maanshan,90031
+Macau,132951
+Maine,88821
+Maoming,93361
+Maryland,88841
+Massachusetts,88851
+Meishan,115931
+Meizhou,93401
+Mianyang,115971
+Miaoli County,123161
+Michigan,88861
+Minnesota,88871
+Mississippi,88881
+Missouri,88891
+Montana,88901
+Mount Bai,104421
+Mount Huangshan,89841
+Mudanjiang,101121
+Nagqu Area,117651
+Nanchang,106801
+Nanchong,116091
+Nanjing,105491
+Nanning,95091
+Nanping,91071
+Nantong,105621
+Nantou County,123351
+Nanyang,99371
+Nebraska,88911
+Neijiang,116051
+Nevada,88921
+New Hampshire,89001
+New Jersey,88931
+New Mexico,89011
+New Taipei City,125021
+New York,88961
+New York / Newark,88961
+New York / Newark / North Bergen / Secaucus,88961
+Ningbo,120961
+Ningde,91091
+Ningxia,109711
+North Carolina,89021
+North Dakota,89031
+Nujiang,119871
+Ohio,89051
+Oklahoma,89061
+Orange,88611
+Ordos,108901
+Oregon,89071
+Oregon,89071
+Panjin,108161
+Panzhihua,116161
+Penghu County,123491
+Pennsylvania,89091
+Philadelphia,89101
+Pingdingshan,99421
+Pingliang,92281
+Pingtung County,123561
+Pingxiang,106921
+Puer,119891
+Putian,91151
+Puyang,99481
+Qiandongnan,96091
+Qianjiang,102351
+Qiannan,96101
+Qianxinan,96111
+Qigihar,101261
+Qingdao,111411
+Qinghai,110011
+Qinghuangdao,97771
+Qingyang,92331
+Qingyuan,93471
+Qinzhou,95221
+Qionghai,96691
+Qiongzhong,96701
+Qitaihe,101221
+Quanzhou,91221
+Qujing,119921
+Quzhou,121101
+Rhode Island,89121
+San Diego,135471
+Sanmenxia,99591
+Sanming,91271
+Sanya,96711
+Shaanxi,113491
+Shaanxi_Yulin,114561
+Shandong,110541
+Shanghai,114681
+Shanghai,114671
+Shangluo,114131
+Shangqiu,99631
+Shangrao,107011
+Shannan,117841
+Shantou,93521
+Shanwei,93591
+Shanxi,112141
+Shaoguan,93611
+Shaoxing,121161
+Shaoyang,103811
+Shennongjia,102371
+Shenyang,108221
+Shenzhen,93651
+Shigatse,117781
+Shihezi,118641
+Shijiazhuang,97981
+Shiyan,102381
+Shizuishan,109841
+Shuangyashan,101391
+Shuozhou,112971
+Sichuan,114881
+Siping,104881
+Songyuan,104911
+South Carolina,89131
+South Dakota,89141
+Suihua,101461
+Suining,116461
+Suizhou,102431
+Suqian,105821
+Tacheng Area,118681
+Taian,111621
+Taichung City,124581
+Tainan City,124201
+Taipei City,123901
+Taitung County,124031
+Taiwan,135725
+Taiyuan,113011
+Tangshan,98081
+Taoyuan City,124981
+Tennessee,89151
+Texas,89161
+Texas,89161
+The North Sea,94371
+Tianjin,116921
+Tianjin,116911
+Tianmen,102451
+Tianshui,92391
+Tibet,117121
+Tieling,108381
+Tongchuan,114201
+Tonghua,104941
+Tongliao,109341
+Tongling,90271
+Tongren,96281
+Tunchang,96731
+Turpan,118721
+United States,88461
+Urumqi,118791
+Utah,89171
+Vermont,89181
+Virginia,89191
+Wanning,96741
+Washington,89211
+Washington,89211
+Washington,89211
+Washington, D.C.,89211
+Weifang,111701
+Weihai,111671
+Weinan,114251
+Wenchang,96751
+Wenshan,120101
+Wenzhou,121321
+West Virginia,89221
+Wisconsin,89231
+Wuhai,109411
+Wuhan,102501
+Wuhu,90351
+Wulanchabu,109481
+Wuwei,92481
+Wuxi,105931
+Wuzhong,109881
+Wuzhou,95381
+Wyoming,89241
+XiAn,114301
+Xiamen,91411
+Xiangtan,103951
+Xiangxi,103991
+Xianning,102681
+Xiantao,102661
+Xianyang,114411
+Xiaogan,102751
+Xilinguole Meng,109541
+Xingan Meng,109591
+Xingtai,98351
+Xining,110421
+Xinjiang,117931
+Xinxiang,99981
+Xinyang,100061
+Xinyu,107171
+Xinzhou,113231
+Xishuangbanna,120151
+Xuancheng,90451
+Xuchang,100101
+Xuzhou,106061
+Yaan,116661
+Yanan,114481
+Yanbian,104991
+Yancheng,106131
+Yangjiang,93861
+Yangquan,113301
+Yangzhou,106171
+Yantai,111821
+Yibin,116731
+Yichang,102801
+Yilan County,101791
+Yili,118961
+Yinchuan,109921
+Yingkou,108491
+Yingtan,107291
+Yiyang,104101
+Yongzhou,104151
+Yueyang,104211
+Yuncheng,113431
+Yunfu,93931
+Yunlin County,125631
+Yunnan,119061
+Yushu,110491
+Yuxi,120351
+Zaozhuang,111961
+Zhangjiajie,104261
+Zhangjiakou,98531
+Zhangye,92581
+Zhangzhou,91571
+Zhanjiang,93951
+Zhaoqing,94001
+Zhaotong,120431
+Zhejiang,120481
+Zhejiang_Taizhou,121231
+Zhengzhou,100281
+Zhenjiang,106251
+Zhongshan,94031
+Zhongwei,109981
+Zhoukou,100361
+Zhoushan,121481
+Zhuhai,94281
+Zhumadian,100381
+Zhuzhou,104311
+Zibo,112061
+Zigong,116861
+Ziyang,116821
+Zunyi,96501
+Afghanistan,135361
+Aland Islands,128301
+Albania,135391
+Algeria,128911
+American Samoa,128271
+Andorra,135341
+Angola,128241
+Anguilla,135381
+Antigua and Barbuda,135371
+Argentina,128261
+Armenia,128861
+Aruba,128291
+Australia,127961
+Austria,128281
+Azerbaijan,128311
+Bahamas,128461
+Bahrain,128381
+Bangladesh,128341
+Barbados,128331
+Belarus,128501
+Belgium,128351
+Belize,128511
+Benin,128401
+Bermuda,128421
+Bhutan,128471
+Bolivia,128441
+Bosnia and Herzegovina,128321
+Botswana,128491
+Brazil,128451
+British India Ocean Territory,131581
+British Virgin Islands,133871
+Brunei,128431
+Bulgaria,128371
+Burkina Faso,128361
+Burundi,128391
+Cameroon,128761
+Canada,128521
+Cambodia,132641
+Cape Verde,128801
+Central African,128701
+Chad,133641
+Chile,128751
+China,89251
+Christmas Island,128811
+Colombia,128771
+Comoros,132661
+Costa Rica,128781
+Croatia,131501
+Cuba,128791
+Cyprus,128821
+Czech,128851
+Democratic Republic of Congo,128691
+Denmark,128881
+Djibouti,128871
+Dominica,128891
+East Timor,133701
+Ecuador,128921
+Egypt,128941
+El Salvador,133601
+Equatorial Guinea,131411
+Eritrea,128961
+Estonia,128931
+Ethiopia,128991
+Falkland Islands,129021
+Federated States of Micronesia,129031
+Fiji,129011
+Finland,129001
+France,129051
+French Guiana,131331
+French Polynesia,133241
+Gabon,131291
+Gambia,131381
+Georgia,131321
+Germany,128051
+Gibraltar,131361
+Greece,131421
+Greenland,131371
+Grenada,131311
+Guadeloupe,131401
+Guam,131451
+Guatemala,131441
+Guernsey,131341
+Guinea,131391
+Guinea Bissau,131461
+Guyana,131471
+Haiti,131511
+Honduras,131491
+Hungary,131521
+Iceland,131611
+India,131571
+Indonesia,131531
+Iran,131601
+Iraq,131591
+Ireland,131541
+Isle of Man,131561
+Israel,131551
+Italy,131621
+Jamaica,131641
+Japan,131661
+Jersey,131631
+Jordan,131651
+Kazakhstan,132711
+Kenya,132621
+Kiribati,132651
+Kuwait,132691
+Kyrgyzstan,132631
+Laos,132721
+Latvia,132811
+Lebanon,132731
+Lesotho,132781
+Liberia,132771
+Libya,132821
+Liechtenstein,132751
+Lithuania,132791
+Macedonia,132901
+Madagascar,132881
+Malaysia,133061
+Maldives,133031
+Mali,132911
+Malta,133011
+Marshall Islands,132891
+Martinique Island,132981
+Mauritania,132991
+Mauritius,133021
+Mayotte,133941
+Mexico,133051
+Moldova,132851
+Monaco,132841
+Mongolia,132931
+Montenegro,132861
+Montserrat,133001
+Morocco,132831
+Mozambique,133071
+Namibia,133081
+Nauru,133181
+Nepal,133171
+Netherlands,133141
+New Caledonia,133091
+New Zealand,133201
+Nicaragua,133131
+Niger,133101
+Nigeria,133121
+Niue,133191
+Norfolk Island,133111
+North Korea,132681
+Northern Mariana Islands,132971
+Norway,133151
+Oman,133211
+Pakistan,133271
+Palau,133351
+Palestine,133321
+Panama,133221
+Papua New Guinea,133251
+Paraguay,133361
+Peru,133231
+Philippines,133261
+Poland,133281
+Portugal,133331
+Puerto Rico,133311
+Qatar,133371
+Republic of the Congo,128711
+Reunion Island,133381
+Romania,133391
+Russia,133421
+Rwanda,133431
+Saint Barthelemy,128411
+Saint Kitts and Nevis,132671
+Saint Lucia,132741
+Saint Pierre and Miquelon,133291
+Saint Vincent and the Grenadines,133851
+Samoa,133921
+San Marino,133551
+Sao Tome and Principe,133591
+Saudi Arabia,133441
+Senegal,133561
+Serbia,133401
+Seychelles,133461
+Sierra Leone,133541
+Singapore,133491
+Slovakia,133531
+Slovenia,133511
+Solomon Islands,133451
+Somalia,133571
+South Africa,133951
+Spain,128971
+Sri Lanka,132761
+Sudan,133471
+Suriname,133581
+Swaziland,133621
+Sweden,133481
+Switzerland,128721
+Syria,133611
+Tajikistan,133681
+Tanzania,133781
+Thailand,133671
+The Cayman Islands,132701
+The Cook Islands,128741
+The Faroe Islands,129041
+The United Arab Emirates,135351
+The United States Virgin Islands,133881
+Togo,133661
+Tokelau Islands,133691
+Tonga,133731
+Trinidad and Tobago,133761
+Tunisia,133721
+Turkey,133741
+Turkmenistan,133711
+Turks and Caicos Islands,133631
+Tuvalu,133771
+Uganda,133801
+Ukraine,133791
+United Kingdom,133981
+United States,88461
+Uruguay,133821
+Uzbekistan,133831
+Vanuatu,133901
+Vatican,133841
+Venezuela,133861
+Vietnam,133891
+Wallis and Futuna Islands,133911
+Yemen,133931
+Zambia,133961
+Zimbabwe,133971
+Antarctica,128251
+Burma,132921
+Columbia,128771
+French Sint Maarten,132871
+Luxemburg,132801
+Mawlawi,133041
