@@ -13,7 +13,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.springframework.core.io.Resource;
 
-import com.focustech.silk.sian.component.constans.Constants;
 
 @Slf4j
 public class IpUtil {
@@ -59,8 +58,7 @@ public class IpUtil {
             dataBuffer.position(offset + (int) index_offset - 262144);
             areaBytes = new byte[index_length];
             dataBuffer.get(areaBytes, 0, index_length);
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
 
@@ -84,8 +82,7 @@ public class IpUtil {
                 }
             }
             indexBuffer.order(ByteOrder.BIG_ENDIAN);
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -102,17 +99,14 @@ public class IpUtil {
                 fin.read(bs, readBytesLength, i);
                 readBytesLength += i;
             }
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             log.error("IpComponentServiceImpl::getBytesByFile()::", ioe);
-        }
-        finally {
+        } finally {
             try {
                 if (fin != null) {
                     fin.close();
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 log.error("IpComponentServiceImpl::getBytesByFile()::", e);
             }
         }
@@ -131,8 +125,7 @@ public class IpUtil {
                 swapStream.write(buff, 0, rc);
             }
             input2Bytes = swapStream.toByteArray();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("IpComponentServiceImpl::getBytesByStream()::", e);
         }
         return input2Bytes;

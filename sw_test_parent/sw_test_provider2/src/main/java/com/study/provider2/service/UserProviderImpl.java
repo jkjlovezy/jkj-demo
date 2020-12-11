@@ -13,8 +13,8 @@ public class UserProviderImpl implements UserProvider {
 
         sleep(id + 30);
         log.info("UserProviderImpl.getUser: {}", id);
-        throw new CustomException("你的传参有误");
-//        return "userId_" + id;
+        //throw new CustomException("你的传参有误");
+        return "userId_" + id;
     }
 
     private void sleep(long mill) {

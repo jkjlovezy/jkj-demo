@@ -23,10 +23,10 @@ public class UserController {
         try {
             return userService.getUser(userId);
         }catch (CustomException e){
-            log.info("provider service customException. {}",e.getMessage());
+            log.info("provider service customException. {}",e);
             return null;
         }catch (Exception e){
-            log.info("provider service exception. {}",e.getMessage());
+            log.info("provider service exception. {}",e);
             return null;
         }
     }
