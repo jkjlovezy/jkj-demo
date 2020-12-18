@@ -203,6 +203,29 @@ public class TimeBucket {
             return name;
         }
     }
+
+    public static class TimeBucketTuple<A, B> {
+        public final A beginTime;
+        public final B endTime;
+
+        public TimeBucketTuple(A a, B b) {
+            this.beginTime = a;
+            this.endTime = b;
+        }
+
+        public A getBeginTime() {
+            return beginTime;
+        }
+
+        public B getEndTime() {
+            return endTime;
+        }
+
+        @Override
+        public String toString() {
+            return "(" + beginTime + ", " + endTime + ")";
+        }
+    }
 }
 
 

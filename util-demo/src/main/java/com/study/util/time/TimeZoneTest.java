@@ -1,7 +1,10 @@
 package com.study.util.time;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -22,5 +25,9 @@ public class TimeZoneTest {
         System.out.println("GMT+8:"+sdf.format(date));
         sdf.setTimeZone(TimeZone.getTimeZone("PST"));
         System.out.println("PST:"+sdf.format(date));
+
+        Date d = new Date(1608100204909L);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d));
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(1608100210159L)));
     }
 }
