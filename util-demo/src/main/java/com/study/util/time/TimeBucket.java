@@ -29,7 +29,7 @@ public class TimeBucket {
      * @return time in second format
      */
     public static long getRecordTimeBucket(long time) {
-        return getTimeBucket(time, Downsampling.Second);
+        return getTimeBucket(time, DownSampling.Second);
     }
 
     /**
@@ -39,7 +39,7 @@ public class TimeBucket {
      * @return time in minute format
      */
     public static long getMinuteTimeBucket(long time) {
-        return getTimeBucket(time, Downsampling.Minute);
+        return getTimeBucket(time, DownSampling.Minute);
     }
 
     /**
@@ -50,15 +50,15 @@ public class TimeBucket {
      */
     public static long getTimestamp(long timeBucket) {
         if (isSecondBucket(timeBucket)) {
-            return getTimestamp(timeBucket, Downsampling.Second);
+            return getTimestamp(timeBucket, DownSampling.Second);
         } else if (isMinuteBucket(timeBucket)) {
-            return getTimestamp(timeBucket, Downsampling.Minute);
+            return getTimestamp(timeBucket, DownSampling.Minute);
         } else if (isHourBucket(timeBucket)) {
-            return getTimestamp(timeBucket, Downsampling.Hour);
+            return getTimestamp(timeBucket, DownSampling.Hour);
         } else if (isDayBucket(timeBucket)) {
-            return getTimestamp(timeBucket, Downsampling.Day);
+            return getTimestamp(timeBucket, DownSampling.Day);
         } else if (isMonthBucket(timeBucket)) {
-            return getTimestamp(timeBucket, Downsampling.Month);
+            return getTimestamp(timeBucket, DownSampling.Month);
         } else {
             throw new RuntimeException("Unknown downsampling value.");
         }
@@ -108,10 +108,10 @@ public class TimeBucket {
      * Convert TimeBucket to Timestamp in millisecond.
      *
      * @param timeBucket   long
-     * @param downsampling Downsampling
+     * @param downsampling DownSampling
      * @return timestamp in millisecond unit
      */
-    public static long getTimestamp(long timeBucket, Downsampling downsampling) {
+    public static long getTimestamp(long timeBucket, DownSampling downsampling) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(0);
         switch (downsampling) {
@@ -139,13 +139,13 @@ public class TimeBucket {
     }
 
     /**
-     * Record time bucket format in Downsampling Unit.
+     * Record time bucket format in DownSampling Unit.
      *
      * @param time         Timestamp
-     * @param downsampling Downsampling
+     * @param downsampling DownSampling
      * @return time in downsampling format
      */
-    public static long getTimeBucket(long time, Downsampling downsampling) {
+    public static long getTimeBucket(long time, DownSampling downsampling) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time);
 
@@ -171,38 +171,7 @@ public class TimeBucket {
                 throw new RuntimeException("Unknown downsampling value.");
         }
     }
-
-    public enum Downsampling {
-        /**
-         * None downsampling is for inventory
-         */
-        None(0, ""),
-        /**
-         * Second downsampling is not for metrics, but for record, profile and top n. Those are details but don't do
-         * aggregation, and still merge into day level in the persistence.
-         */
-        Second(1, "second"),
-        Minute(2, "minute"),
-        Hour(3, "hour"),
-        Day(4, "day"),
-        Month(5, "month");
-
-        private final int value;
-        private final String name;
-
-        Downsampling(int value, String name) {
-            this.value = value;
-            this.name = name;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
+    
 
     public static class TimeBucketTuple<A, B> {
         public final A beginTime;

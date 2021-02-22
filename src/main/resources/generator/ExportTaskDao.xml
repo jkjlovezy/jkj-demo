@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.ExportTaskDao">
+  <resultMap id="BaseResultMap" type="generate.ExportTask">
+    <!--@mbg.generated-->
+    <id column="EXPORT_TASK_ID" jdbcType="DECIMAL" property="exportTaskId" />
+    <result column="TASK_TYPE" jdbcType="VARCHAR" property="taskType" />
+    <result column="TASK_PARAMS" jdbcType="VARCHAR" property="taskParams" />
+    <result column="S_BUSI_ID" jdbcType="DECIMAL" property="sBusiId" />
+    <result column="S_USER_ID" jdbcType="DECIMAL" property="sUserId" />
+    <result column="S_COM_NAME_EN" jdbcType="VARCHAR" property="sComNameEn" />
+    <result column="S_COM_NAME_CN" jdbcType="VARCHAR" property="sComNameCn" />
+    <result column="BENEFICIARY_ID" jdbcType="DECIMAL" property="beneficiaryId" />
+    <result column="BUSINESS_TYPE" jdbcType="VARCHAR" property="businessType" />
+    <result column="BEGIN_DATE" jdbcType="TIMESTAMP" property="beginDate" />
+    <result column="END_DATE" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="EXPORT_TOTAL" jdbcType="DECIMAL" property="exportTotal" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="FAIL_REASON" jdbcType="VARCHAR" property="failReason" />
+    <result column="RETRY_NUM" jdbcType="DECIMAL" property="retryNum" />
+    <result column="EXECUTE_TIME" jdbcType="TIMESTAMP" property="executeTime" />
+    <result column="SEND_EMAIL_TIME" jdbcType="TIMESTAMP" property="sendEmailTime" />
+    <result column="ADDER_NO" jdbcType="VARCHAR" property="adderNo" />
+    <result column="ADDER_NAME" jdbcType="VARCHAR" property="adderName" />
+    <result column="ADD_TIME" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="ADD_SITE" jdbcType="VARCHAR" property="addSite" />
+    <result column="UPDATER_NO" jdbcType="VARCHAR" property="updaterNo" />
+    <result column="UPDATER_NAME" jdbcType="VARCHAR" property="updaterName" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_SITE" jdbcType="VARCHAR" property="updateSite" />
+    <result column="OPERATOR_IP" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="REP_TIME" jdbcType="TIMESTAMP" property="repTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    EXPORT_TASK_ID, TASK_TYPE, TASK_PARAMS, S_BUSI_ID, S_USER_ID, S_COM_NAME_EN, S_COM_NAME_CN, 
+    BENEFICIARY_ID, BUSINESS_TYPE, BEGIN_DATE, END_DATE, EXPORT_TOTAL, "STATUS", FAIL_REASON, 
+    RETRY_NUM, EXECUTE_TIME, SEND_EMAIL_TIME, ADDER_NO, ADDER_NAME, ADD_TIME, ADD_SITE, 
+    UPDATER_NO, UPDATER_NAME, UPDATE_TIME, UPDATE_SITE, OPERATOR_IP, REP_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from EXPORT_TASK
+    where EXPORT_TASK_ID = #{exportTaskId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from EXPORT_TASK
+    where EXPORT_TASK_ID = #{exportTaskId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" keyColumn="EXPORT_TASK_ID" keyProperty="exportTaskId" parameterType="generate.ExportTask" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into EXPORT_TASK (TASK_TYPE, TASK_PARAMS, S_BUSI_ID, 
+      S_USER_ID, S_COM_NAME_EN, S_COM_NAME_CN, 
+      BENEFICIARY_ID, BUSINESS_TYPE, BEGIN_DATE, 
+      END_DATE, EXPORT_TOTAL, "STATUS", 
+      FAIL_REASON, RETRY_NUM, EXECUTE_TIME, 
+      SEND_EMAIL_TIME, ADDER_NO, ADDER_NAME, 
+      ADD_TIME, ADD_SITE, UPDATER_NO, 
+      UPDATER_NAME, UPDATE_TIME, UPDATE_SITE, 
+      OPERATOR_IP, REP_TIME)
+    values (#{taskType,jdbcType=VARCHAR}, #{taskParams,jdbcType=VARCHAR}, #{sBusiId,jdbcType=DECIMAL}, 
+      #{sUserId,jdbcType=DECIMAL}, #{sComNameEn,jdbcType=VARCHAR}, #{sComNameCn,jdbcType=VARCHAR}, 
+      #{beneficiaryId,jdbcType=DECIMAL}, #{businessType,jdbcType=VARCHAR}, #{beginDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{exportTotal,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, 
+      #{failReason,jdbcType=VARCHAR}, #{retryNum,jdbcType=DECIMAL}, #{executeTime,jdbcType=TIMESTAMP}, 
+      #{sendEmailTime,jdbcType=TIMESTAMP}, #{adderNo,jdbcType=VARCHAR}, #{adderName,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{addSite,jdbcType=VARCHAR}, #{updaterNo,jdbcType=VARCHAR}, 
+      #{updaterName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateSite,jdbcType=VARCHAR}, 
+      #{operatorIp,jdbcType=VARCHAR}, #{repTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="EXPORT_TASK_ID" keyProperty="exportTaskId" parameterType="generate.ExportTask" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into EXPORT_TASK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskType != null">
+        TASK_TYPE,
+      </if>
+      <if test="taskParams != null">
+        TASK_PARAMS,
+      </if>
+      <if test="sBusiId != null">
+        S_BUSI_ID,
+      </if>
+      <if test="sUserId != null">
+        S_USER_ID,
+      </if>
+      <if test="sComNameEn != null">
+        S_COM_NAME_EN,
+      </if>
+      <if test="sComNameCn != null">
+        S_COM_NAME_CN,
+      </if>
+      <if test="beneficiaryId != null">
+        BENEFICIARY_ID,
+      </if>
+      <if test="businessType != null">
+        BUSINESS_TYPE,
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="exportTotal != null">
+        EXPORT_TOTAL,
+      </if>
+      <if test="status != null">
+        "STATUS",
+      </if>
+      <if test="failReason != null">
+        FAIL_REASON,
+      </if>
+      <if test="retryNum != null">
+        RETRY_NUM,
+      </if>
+      <if test="executeTime != null">
+        EXECUTE_TIME,
+      </if>
+      <if test="sendEmailTime != null">
+        SEND_EMAIL_TIME,
+      </if>
+      <if test="adderNo != null">
+        ADDER_NO,
+      </if>
+      <if test="adderName != null">
+        ADDER_NAME,
+      </if>
+      <if test="addTime != null">
+        ADD_TIME,
+      </if>
+      <if test="addSite != null">
+        ADD_SITE,
+      </if>
+      <if test="updaterNo != null">
+        UPDATER_NO,
+      </if>
+      <if test="updaterName != null">
+        UPDATER_NAME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="updateSite != null">
+        UPDATE_SITE,
+      </if>
+      <if test="operatorIp != null">
+        OPERATOR_IP,
+      </if>
+      <if test="repTime != null">
+        REP_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskType != null">
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskParams != null">
+        #{taskParams,jdbcType=VARCHAR},
+      </if>
+      <if test="sBusiId != null">
+        #{sBusiId,jdbcType=DECIMAL},
+      </if>
+      <if test="sUserId != null">
+        #{sUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="sComNameEn != null">
+        #{sComNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sComNameCn != null">
+        #{sComNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficiaryId != null">
+        #{beneficiaryId,jdbcType=DECIMAL},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exportTotal != null">
+        #{exportTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="failReason != null">
+        #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="retryNum != null">
+        #{retryNum,jdbcType=DECIMAL},
+      </if>
+      <if test="executeTime != null">
+        #{executeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendEmailTime != null">
+        #{sendEmailTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adderNo != null">
+        #{adderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="adderName != null">
+        #{adderName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addSite != null">
+        #{addSite,jdbcType=VARCHAR},
+      </if>
+      <if test="updaterNo != null">
+        #{updaterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="updaterName != null">
+        #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateSite != null">
+        #{updateSite,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="repTime != null">
+        #{repTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.ExportTask">
+    <!--@mbg.generated-->
+    update EXPORT_TASK
+    <set>
+      <if test="taskType != null">
+        TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskParams != null">
+        TASK_PARAMS = #{taskParams,jdbcType=VARCHAR},
+      </if>
+      <if test="sBusiId != null">
+        S_BUSI_ID = #{sBusiId,jdbcType=DECIMAL},
+      </if>
+      <if test="sUserId != null">
+        S_USER_ID = #{sUserId,jdbcType=DECIMAL},
+      </if>
+      <if test="sComNameEn != null">
+        S_COM_NAME_EN = #{sComNameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="sComNameCn != null">
+        S_COM_NAME_CN = #{sComNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficiaryId != null">
+        BENEFICIARY_ID = #{beneficiaryId,jdbcType=DECIMAL},
+      </if>
+      <if test="businessType != null">
+        BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE = #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exportTotal != null">
+        EXPORT_TOTAL = #{exportTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        "STATUS" = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="failReason != null">
+        FAIL_REASON = #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="retryNum != null">
+        RETRY_NUM = #{retryNum,jdbcType=DECIMAL},
+      </if>
+      <if test="executeTime != null">
+        EXECUTE_TIME = #{executeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendEmailTime != null">
+        SEND_EMAIL_TIME = #{sendEmailTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adderNo != null">
+        ADDER_NO = #{adderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="adderName != null">
+        ADDER_NAME = #{adderName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addSite != null">
+        ADD_SITE = #{addSite,jdbcType=VARCHAR},
+      </if>
+      <if test="updaterNo != null">
+        UPDATER_NO = #{updaterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="updaterName != null">
+        UPDATER_NAME = #{updaterName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateSite != null">
+        UPDATE_SITE = #{updateSite,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        OPERATOR_IP = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="repTime != null">
+        REP_TIME = #{repTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EXPORT_TASK_ID = #{exportTaskId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.ExportTask">
+    <!--@mbg.generated-->
+    update EXPORT_TASK
+    set TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      TASK_PARAMS = #{taskParams,jdbcType=VARCHAR},
+      S_BUSI_ID = #{sBusiId,jdbcType=DECIMAL},
+      S_USER_ID = #{sUserId,jdbcType=DECIMAL},
+      S_COM_NAME_EN = #{sComNameEn,jdbcType=VARCHAR},
+      S_COM_NAME_CN = #{sComNameCn,jdbcType=VARCHAR},
+      BENEFICIARY_ID = #{beneficiaryId,jdbcType=DECIMAL},
+      BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      BEGIN_DATE = #{beginDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      EXPORT_TOTAL = #{exportTotal,jdbcType=DECIMAL},
+      "STATUS" = #{status,jdbcType=DECIMAL},
+      FAIL_REASON = #{failReason,jdbcType=VARCHAR},
+      RETRY_NUM = #{retryNum,jdbcType=DECIMAL},
+      EXECUTE_TIME = #{executeTime,jdbcType=TIMESTAMP},
+      SEND_EMAIL_TIME = #{sendEmailTime,jdbcType=TIMESTAMP},
+      ADDER_NO = #{adderNo,jdbcType=VARCHAR},
+      ADDER_NAME = #{adderName,jdbcType=VARCHAR},
+      ADD_TIME = #{addTime,jdbcType=TIMESTAMP},
+      ADD_SITE = #{addSite,jdbcType=VARCHAR},
+      UPDATER_NO = #{updaterNo,jdbcType=VARCHAR},
+      UPDATER_NAME = #{updaterName,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_SITE = #{updateSite,jdbcType=VARCHAR},
+      OPERATOR_IP = #{operatorIp,jdbcType=VARCHAR},
+      REP_TIME = #{repTime,jdbcType=TIMESTAMP}
+    where EXPORT_TASK_ID = #{exportTaskId,jdbcType=DECIMAL}
+  </update>
+</mapper>

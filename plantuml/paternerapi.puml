@@ -1,0 +1,33 @@
+@startuml
+"Inventory Source" -> Doba后台: requestPartnerPermission
+ note left of "Inventory Source" : 状态1：有效、无效.（根据是否订阅自动维护）\n状态2：Accept、Deny（买家拒绝）、Frozen（运营冻结）
+Doba后台 -> Doba后台: 检查是否已存在授权数据
+alt 不存在
+else 已订阅
+    Doba后台 -> Doba静态页面: 显示“授权按钮”
+    Doba后台 --> "Inventory Source": 【授权成功】异步通知【有效+Accept】
+
+    Doba后台 -> Doba静态页面: 【授权成功】跳转到授权成功提示页面。
+    Doba后台 X-> Doba静态页面: 【授权失败】跳转到授权失败提示页面
+else 未订阅
+    Doba后台 -> Doba静态页面: 显示“授权按钮” + 文案提示(授权后还需订阅)
+    Doba后台 --> "Inventory Source": 【授权成功】异步通知【无效+Accept】
+    Doba后台 -> Doba静态页面: 【授权成功】跳转到授权成功提示页面。
+    Doba后台 X-> Doba静态页面: 【授权失败】跳转到授权失败提示页面
+end
+
+alt 已存在
+    else 已订阅+Accept
+    Doba后台 -> Doba静态页面: 提示已授权成功
+    Doba后台 --> "Inventory Source": 异步通知【有效+Accept】
+    else 已订阅 + Deny
+    Doba后台 -> Doba静态页面:  显示授权按钮，可进行授权操作
+    else 已订阅 + Frozen
+        Doba后台 -> Doba静态页面:  提示被冻结，描述冻结原因
+    else 未订阅 + Accept/Deny
+    Doba后台 -> Doba静态页面: 提示引导去订阅
+    else 未订阅 + Frozen
+    Doba后台 -> Doba静态页面: 提示被冻结，描述冻结原因
+end
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+participant "Iventory Source" as IS
+participant gateway
+participant sian
+participant "ds center front" as DS
+participant "ds center backend" as DS2
+note left of "Inventory Source" : 订阅状态planStatus：有效、无效. \n订阅级别planRank:：0-Startup、1-Business、2-Enterprise\n授权状态grantStatus：Accept、Deny（买家拒绝）、Frozen（运营冻结）
+IS -> gateway: getAuthenticationUrl
+note left:【headerParams】\nappKey\nsignType\ntimestamp\nsign\nretailerId
+gateway -> gateway: 根据headerParmas解析出\n合作方商户的partnerId\n零售商的retailerId
+gateway->sian: getAuthenticationUrl(传参:partnerId+retailerId)
+sian->gateway: return getAuthenticationUrl
+note right:https://app-dropshipping.crov.com/partner/authentication?${encryptStr}\n[authenticationUrl格式: url?encrypt(partnerId、retailerId、timestamp)]
+gateway -> IS: return authenticationUrl
+IS->DS: access authenticationUrl
+DS->DS2: 进行授权
+DS2->DS: 授权成功
+DS2-->IS: 授权成功异步通知
+alt 已登录
+DS->DS2: getAuthenticationInfo(encryptStr[retailerId=111])
+DS2->DS: case1:页面提示登录用户有误，以用户111进行登录。\n{needLogout:true, userInfo:{retailerId:222,userStatus:正常}, planInfo:{},grantInfo:{}}
+DS2-->DS: case2：提示已被冻结，不能进行授权操作 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Business}, grantInfo:{grantStatus:Frozen}}
+DS2-->DS: case3:未订阅+无授权过/授权Deny，提示订阅后才能进行授权,显示“去订阅”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:null, grantInfo:null}
+DS2-->DS: case4:未订阅+授权Accept，提示订阅已失效重新订阅后自动授权成功,显示“去订阅”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:null, grantInfo:null}
+DS2-->DS: case5:订阅级别不够+无授权过/授权Deny，提示升级为Business以上后才能进行授权，显示“去升级”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Startup}, grantInfo:null}
+DS2-->DS: case6:订阅级别不够+授权Accept，提示升级为Business以上后自动授权成功，显示“去升级”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Startup}, grantInfo:{grantStatus:Accept}}
+DS2-->DS: case7:已授权成功，无需操作\n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Business}, grantInfo:{grantStatus:Accept}}
+end
+alt 未登录
+DS2-->DS:重定向至登录页面，进行登录，登录后走上面逻辑。
+end
+
+IS->gateway: getSpuDetail
+note left:【headerParams】\nappKey\nsignType\ntimestamp\nsign\nretailerId
+gateway -> gateway: 根据headerParmas解析出\n合作方商户的partnerId\n零售商的retailerId
+gateway -> Product: getSpuDetail: header传参(partnerId + retailerId)
+Product -> Product: 根据partnerId、retailerId校验是否具有权限\n（partnerId与retailerId的映射关系存在、零售商的订阅状态=有效，订阅级别=Business以上、授权状态=Accept）
+Product->gateway: SpuDetailResponse(responseCode=0000000-Success，999999-Fail，xxxxxx-零售商权限校验失败)\n当返回xxxxxx-零售商权限校验失败时，IS提示用户进行授权操作。 因IS保存的授权状态可能与Doba（Doba方会根据订阅plan自动生效失效）不一致，任何时候IS都要保证授权按钮可跳转至Doba。
+gateway->IS: SpuDetailResponse
+@enduml
+
