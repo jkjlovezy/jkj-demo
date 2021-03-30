@@ -1,11 +1,8 @@
 package com.study.util.time;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class TimeZoneTest {
@@ -16,18 +13,29 @@ public class TimeZoneTest {
 //        for(String s: TimeZone.getAvailableIDs()){
 //            System.out.println(s);
 //        }
-        System.out.println("default TimeZone:"+TimeZone.getDefault().getID());
+        System.out.println("default TimeZone:" + TimeZone.getDefault());
         Date date = new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy", Locale.ENGLISH);
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        System.out.println("Asia/Shanghai时区:" + sdf.format(date));
         sdf.setTimeZone(TimeZone.getTimeZone("CTT"));
-        System.out.println("CTT:"+sdf.format(date));
+        System.out.println("CTT时区:" + sdf.format(date));
         sdf.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        System.out.println("GMT+8:"+sdf.format(date));
+        System.out.println("GMT+8时区:" + sdf.format(date));
         sdf.setTimeZone(TimeZone.getTimeZone("PST"));
-        System.out.println("PST:"+sdf.format(date));
+        System.out.println("PST时区:" + sdf.format(date));
 
-        Date d = new Date(1608100204909L);
+        System.out.println(getDateStrAndTimeZone(date,"MMM dd, yyyy","PST"));
+        /*Date d = new Date(1608100204909L);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d));
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(1608100210159L)));
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(1608100210159L)));*/
+    }
+
+
+
+    public static String getDateStrAndTimeZone(Date date, String format, String timeZone) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
+        sdf.setTimeZone(TimeZone.getTimeZone(timeZone));
+        return String.format("%s(%s)", sdf.format(date), timeZone);
     }
 }

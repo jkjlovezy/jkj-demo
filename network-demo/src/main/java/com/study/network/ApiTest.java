@@ -20,7 +20,6 @@ public class ApiTest {
         long timestamp = System.currentTimeMillis();
         requestHeaders.add("timestamp", String.valueOf(timestamp));
         requestHeaders.add("sign", RsaUtil.sign(appKey,privateKey,timestamp));
-        RestTemplate restTemplate = new RestTemplate();
 
         HttpEntity<String> requestEntity = new HttpEntity<String>("{\n" +
                 "    \"beginTime\": \"2020-08-11\",\n" +
@@ -29,16 +28,12 @@ public class ApiTest {
                 "    \"pageSize\": 50\n" +
                 "}", requestHeaders);
         RestTemplate template = new RestTemplate();
-//        ResponseEntity<String> response = template.exchange("http://openapi.crov.com/api/seller/queryOrderDetail", HttpMethod.POST, requestEntity, String.class);
-//        ResponseEntity<String> response = template.exchange("https://sandbox-openapi.crov.com/api/seller/queryOrderDetail", HttpMethod.POST, requestEntity, String.class);
 
         ResponseEntity<String> response = template.exchange("https://sandbox-openapi.crov.com/api/seller/queryOrderDetail", HttpMethod.POST, requestEntity, String.class);
-//        ResponseEntity<String> response = template.exchange("https://sandbox-openapi.crov.com/api/goods/spu/list", HttpMethod.GET, requestEntity, String.class);
-        String body = response.getBody();
-        System.out.println(body);
-        HttpHeaders responseHeaders = response.getHeaders();
+        System.out.println(response);
+        /*HttpHeaders responseHeaders = response.getHeaders();
                 for(Map.Entry<String, List<String>> entry:responseHeaders.entrySet()){
                     System.out.println(entry.getKey()+":\t"+entry.getValue());
-                }
+                }*/
     }
 }

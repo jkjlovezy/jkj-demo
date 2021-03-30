@@ -8,7 +8,7 @@ note left of "Inventory Source" : 订阅状态planStatus：有效、无效. \n�
 IS -> gateway: getAuthenticationUrl
 note left:【headerParams】\nappKey\nsignType\ntimestamp\nsign\nretailerId
 gateway -> gateway: 根据headerParmas解析出\n合作方商户的partnerId\n零售商的retailerId
-gateway->sian: getAuthenticationUrl(传参:partnerId+retailerId)
+gateway->sian: requestPermission(传参:partnerId+retailerId)
 sian->gateway: return getAuthenticationUrl
 note right:https://app-dropshipping.crov.com/partner/authentication?${encryptStr}\n[authenticationUrl格式: url?encrypt(partnerId、retailerId、timestamp)]
 gateway -> IS: return authenticationUrl
@@ -18,13 +18,13 @@ DS2->DS: 授权成功
 DS2-->IS: 授权成功异步通知
 alt 已登录
 DS->DS2: getAuthenticationInfo(encryptStr[retailerId=111])
-DS2->DS: case1:页面提示登录用户有误，以用户111进行登录。\n{needLogout:true, userInfo:{retailerId:222,userStatus:正常}, planInfo:{},grantInfo:{}}
-DS2-->DS: case2：提示已被冻结，不能进行授权操作 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Business}, grantInfo:{grantStatus:Frozen}}
-DS2-->DS: case3:未订阅+无授权过/授权Deny，提示订阅后才能进行授权,显示“去订阅”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:null, grantInfo:null}
-DS2-->DS: case4:未订阅+授权Accept，提示订阅已失效重新订阅后自动授权成功,显示“去订阅”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:null, grantInfo:null}
-DS2-->DS: case5:订阅级别不够+无授权过/授权Deny，提示升级为Business以上后才能进行授权，显示“去升级”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Startup}, grantInfo:null}
-DS2-->DS: case6:订阅级别不够+授权Accept，提示升级为Business以上后自动授权成功，显示“去升级”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Startup}, grantInfo:{grantStatus:Accept}}
-DS2-->DS: case7:已授权成功，无需操作\n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Business}, grantInfo:{grantStatus:Accept}}
+DS2->DS: case1:登录账号与授权url中的retailerId不一致，提示用户切换账号，请以用户111进行登录。\n{needLogout:true, userInfo:{retailerId:222,userStatus:正常}, planInfo:{},grantInfo:{}}
+DS2-->DS: case2：是doba用户且存在有效订阅计划，页面提示不能进行授权操作 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Business}, grantInfo:{grantStatus:Frozen}}
+DS2-->DS: case3：授权Frozen，提示已被冻结，不能进行授权操作 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Business}, grantInfo:{grantStatus:Frozen}}
+DS2-->DS: case4:未订阅+无授权过/授权Deny，提示订阅后才能进行授权,显示“去订阅”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:null, grantInfo:null}
+DS2-->DS: case5:未订阅+授权Accept，提示订阅已失效重新订阅后自动授权成功,显示“去订阅”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:null, grantInfo:null}
+DS2-->DS: case6:已订阅+无授权过/授权Deny，显示“授权”按钮 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Startup}, grantInfo:null}
+DS2-->DS: case7:已订阅+授权Accept，提示已授权成功，无需操作 \n{needLogout:false, userInfo:{retailerId:111,userStatus:正常}, planInfo:{planStatus:有效,planRank:Partner}, grantInfo:{grantStatus:Accept}}
 end
 alt 未登录
 DS2-->DS:重定向至登录页面，进行登录，登录后走上面逻辑。
