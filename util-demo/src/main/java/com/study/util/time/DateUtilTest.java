@@ -4,8 +4,10 @@ import java.time.Instant;
 
 public class DateUtilTest {
     public static void main(String[] args) {
+        System.out.println(DateUtil.convertDayPrecision("20210422", "yyyyMMdd", "yyyy年MM月dd日"));
+        System.out.println(DateUtil.convertMonthPrecision("202104", "yyyyMM", "yyyy年MM月"));
         System.out.println(System.currentTimeMillis());
-        System.out.println(DateUtil.format(1600063859901L, "yyyy-MM-dd HH:mm:ss"));
+        System.out.println(DateUtil.format(1617759077691L, "yyyy-MM-dd HH:mm:ss"));
         System.out.println(DateUtil.format(1600063859901L, "yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
         System.out.println(Instant.now());

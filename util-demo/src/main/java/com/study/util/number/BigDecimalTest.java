@@ -1,6 +1,7 @@
 package com.study.util.number;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class BigDecimalTest {
     public static BigDecimal divide(BigDecimal divisor, BigDecimal divide, int pos, int round) {
@@ -11,5 +12,7 @@ public class BigDecimalTest {
     }
     public static void main(String[] args) {
         System.out.println(divide(new BigDecimal(100),new BigDecimal(3),2,BigDecimal.ROUND_DOWN));
+
+        System.out.println(new DecimalFormat("#,###").format(1202392323L));
     }
 }

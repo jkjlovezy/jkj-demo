@@ -4,13 +4,16 @@ import static com.study.util.time.DownSampling.Day;
 import static com.study.util.time.DownSampling.Hour;
 import static com.study.util.time.DownSampling.Minute;
 import static com.study.util.time.DownSampling.Second;
+import static java.time.format.DateTimeFormatter.ofPattern;
 
 import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -22,6 +25,14 @@ import com.study.util.time.TimeBucket.TimeBucketTuple;
 
 @Slf4j
 public class DateUtil {
+    public static String convertMonthPrecision(String monthPrecisionStr, String sourceFormat, String targetFormat) {
+        return YearMonth.parse(monthPrecisionStr, ofPattern(sourceFormat)).format(ofPattern(targetFormat));
+    }
+
+    public static String convertDayPrecision(String dateStr, String sourceFormat, String targetFormat) {
+        return LocalDate.parse(dateStr, ofPattern(sourceFormat)).format(ofPattern(targetFormat));
+    }
+
     public static String format(long milli, String pattern) {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(milli), ZoneId.systemDefault());
         return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
