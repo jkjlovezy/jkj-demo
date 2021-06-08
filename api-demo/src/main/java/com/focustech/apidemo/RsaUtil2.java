@@ -1,4 +1,4 @@
-package com.study.network;
+package com.focustech.apidemo;
 
 
 import java.security.KeyFactory;
@@ -13,7 +13,7 @@ import org.apache.commons.codec.binary.Base64;
 /**
  * RSA公钥/私钥/签名工具类
  */
-public class RsaUtil {
+public class RsaUtil2 {
     /**
      * 加密算法RSA
      */

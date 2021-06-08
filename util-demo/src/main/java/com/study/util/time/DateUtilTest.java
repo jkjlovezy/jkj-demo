@@ -1,9 +1,20 @@
 package com.study.util.time;
 
+import static java.time.format.DateTimeFormatter.ofPattern;
+
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class DateUtilTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println(LocalDateTime.now().format(ofPattern("yyyyMMdd_HHmmss")));
+
+        System.out.println(DateUtil.secondPrecision("2021-04-19 00:00:00").getTime());
+        System.out.println(DateUtil.secondPrecision("2021-04-19 23:59:59").getTime());
+        System.out.println(DateUtil.secondPrecision("2021-05-19 23:59:59").getTime());
+        System.out.println(DateUtil.secondPrecision("2022-04-19 23:59:59").getTime());
+        System.out.println(LocalDate.now().format(ofPattern("yyyyMMdd")));
         System.out.println(DateUtil.convertDayPrecision("20210422", "yyyyMMdd", "yyyy年MM月dd日"));
         System.out.println(DateUtil.convertMonthPrecision("202104", "yyyyMM", "yyyy年MM月"));
         System.out.println(System.currentTimeMillis());

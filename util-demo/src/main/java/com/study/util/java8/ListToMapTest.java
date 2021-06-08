@@ -16,6 +16,9 @@ public class ListToMapTest {
         Map<String, List<SupplierAccount>> accountMap = accounts.stream().collect(Collectors.groupingBy(supplierAccount -> supplierAccount.getBeneficiaryId() + ":" + supplierAccount.getCurrency(),
                 Collectors.toList()));
         System.out.println(accountMap);
+
+        Map<Long, SupplierAccount> map = accounts.stream().collect(Collectors.toMap(SupplierAccount::getBeneficiaryId,Function.identity()));
+        System.out.println(map);
     }
 
     private static List<SupplierAccount> buildList() {

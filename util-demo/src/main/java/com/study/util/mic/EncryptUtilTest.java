@@ -7,6 +7,7 @@ import com.study.util.mic.EncryptUtil;
 
 public class EncryptUtilTest {
     public static void main(String[] args) {
+        System.out.println(EncryptUtil.encode(88961L));
         System.out.println(EncryptUtil.decode("WZAfKUpEtwMV"));
         System.out.println(EncryptUtil.encode(12L));
 

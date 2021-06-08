@@ -11,6 +11,8 @@ public class UrlEncodeTest {
         System.out.println(es);
         String ds = URLDecoder.decode(es,"utf-8");
         System.out.println(ds);
+
+        System.out.println(URLEncoder.encode("Lh Basic & Home Inc. Qingdao Bright Building Materials Co.,Ltd. !@#$%^&*()-={}|:\"<>?,./;'[]\\ ;; \"Gg\" 'test'","utf-8"));
     }
 }
 

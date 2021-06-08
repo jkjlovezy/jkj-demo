@@ -12,6 +12,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -20,14 +21,10 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import com.alibaba.fastjson.JSON;
+
 public class OkHttpTest {
 
-    public static void main(String[] args) throws Exception {
-
-//            placeOrder();
-        externRegisterGet();
-
-    }
 
     public static void externRegisterGet() throws Exception {
         String appKey = "20201028771070396366585856";
@@ -125,5 +122,37 @@ public class OkHttpTest {
                 .header("comId", "614823684").build();
         Response response = client.newCall(request).execute();
         System.out.println(response.code() + "\t" + response.body().string());
+    }
+
+    static String appKey = "20200929760537865812705280";
+    static String privateKey = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCCm8p85smNCGgKEXpfFnM1hlOnzbmm3wCgusR8wQ4dbhLZsdCsPlF6iuz8dMkRVpTcbmaVK7Z4RH2K6tcKE+6rBabFgbqDcQG5o4r5eCNEq68ee5AdmGvszXfsW5wwxIULvWAGywk8nqwtnNproN3PkcUtIDvgAvpsZCsaZaS/9nYEJMGsdX36PbT+2cCFC/40YACL9vFhD25opDx0a3GqxazZCjjSIRDmPc4iXP+1mhco5v/lA+Bre0vNFXG4N2+eWFdyFivttvRz/uBC3s6PQEvE3tl96g+Okye1smfsP+c4tVS8WAGS2oF5FQi4i0RP/+oZ/tx3rtw5jLJF7clfAgMBAAECggEAXJ2u6/0YBXtlk2YreYxI7Dax0bdvo+ZU4qUuOi0IHlR054xRJiMW0if7v1XtUu8rplhfQ/54aTZgNActsAbMYtgiF8JTiWu0RnizTw4jLEn2Z05FtsbkGUrmdGPOEUL5+YYztv15MlRuUfX9aP7s64k54jMOYl6aSAyMCC71se1GF64VieQng4zUfhvt3I3gKE37A4wRjMPZaTGyEEvESRoKqmBcpbPCCeodKwa0DxuKuTPL1MhIBztq8Xo5u+magyA0sFch+61xCMhKkGNlI5EcMlSxOFIo1SlGGYPQCCfyBInEMd9qURiL42UG8g/1Dsq2mSFRwKd1hSOswMEWIQKBgQDHf410fca1h+37ebLD7eqFMq/JFxHO5yEWzlEejPK98LWoe89BJ/IUHebhMtecBzc5mo7Pt/WgAbpf0A0+ZnofCyeV5mRRDMhFczKXEYuRJjjV32KLBHWk3uWB+dfkQzdoFO3M6fITJwXsZ9AYpmu1Fi8uXY6V6tcAhAkVCC/dTwKBgQCnmXN2JO3CovjnX7Pimo78F9k8ux4vuxhjX9m+teaYTOLlyKW8CLsBfRuswoy8wus5w/ZLjOjmJZJOq2qCxjMvVQtU8O1DYJotmv9ri8EPulWXBzAJi6n8nh3Lh4AkozXz00MDIiA8XV8DS1uQrDy6CjS9R4OW3B2tr+ZZuzHu8QKBgQCiobb9SjOddQxqv1EeLGvM3f8znVzlIMJ2xwaWMy0H7p0IlrXkVd4gzCeVWk8uYSuCCB938m2IXSBET2Ucg4n2mK9SohkRgawaAckyIhl24IPgxlSdI6uMFjFe/gAjkzAt5zHcpLK1LlDD4fVgwvp3C3i3AYnlaSaQwxJsVNpAPQKBgGFn7NQISGrrnu+SDpEvtNRM5API2JVzDoyK45lUTM3NOb3ErJYpGM6XsKLqezMlseJjwtxL6/v+cBbqxz90A8GJksluMOcM2O6Se8o8chs6942MLt4NXuEj4Dsu6Eni1XN9ICBNECElPxhCDth5Ud3qGpa7Xn4qNdGBPsZ95lpxAoGAMfIFt8HUpiA9AnvujRxcsT51GbWWjA42VflOjRNYfd5OibzDjW1Trqaa2W+NHcwc9kKc7NAPvEgFaWnxdKzvWQKF8o+AzObHFzlEampINkRTGIYWl/H1o30D1qnsXmuFGHpSZH0m6wktYZRDNx49kSEuWKln1eodRV+lFPOtI08=";
+    static String signType = "rsa2";
+
+    public static void queryOrder() throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        long timestamp = System.currentTimeMillis();
+        String sign = RsaUtil.sign(appKey, privateKey, timestamp);
+        System.out.println(timestamp);
+        System.out.println(sign);
+        String jsonBody = JSON.toJSONString(new HashMap<String, Object>() {
+            {
+                put("ordBusiId", "352104134879485331");
+            }
+        });
+        Request request = new Request.Builder().url("https://openapi.doba.com/api/order/doba/queryOrder")
+                .header("appKey", appKey)
+                .header("signType", "rsa2")
+                .header("timestamp", String.valueOf(timestamp))
+                .header("sign", sign)
+                //.method("GET", RequestBody.create(MediaType.get(APPLICATION_JSON_VALUE), jsonBody))
+                //.put(RequestBody.create(MediaType.get(APPLICATION_JSON_VALUE), jsonBody))
+                //.post(RequestBody.create(MediaType.get(APPLICATION_JSON_VALUE), jsonBody))
+                .build();
+        Response response = client.newCall(request).execute();
+        System.out.println(response.code() + "\t" + response.body().string());
+    }
+
+    public static void main(String[] args) throws Exception {
+        queryOrder();
     }
 }
