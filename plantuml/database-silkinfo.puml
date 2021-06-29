@@ -1,0 +1,52 @@
+@startuml
+title silkinfo数据库网络拓扑
+card phx机房{
+    database  usa_silkinfo_bak2[
+        usa_silkinfo_bak2
+        ===
+        10.1.4.85
+    ]
+
+    database phx_silkinfo[
+        phx_silkinfo
+        ===
+        10.1.4.80
+        ---
+        10.1.4.82
+    ]
+}
+
+card usa机房{
+    database usa_silkinfo [
+        usa_silkinfo
+        ===
+        172.24.16.123
+        ---
+        172.24.16.124
+    ]
+    database usa_silkinfo_bak [
+       usa_silkinfo_bak
+       ===
+       172.24.16.116
+    ]
+}
+
+card tc机房{
+    database tc_silkinfo [
+        tc_silkinfo
+        ===
+        192.168.4.80
+        ---
+        192.168.4.82
+    ]
+}
+
+phx_silkinfo <-> usa_silkinfo: 流复制
+phx_silkinfo <-> tc_silkinfo: 流复制
+usa_silkinfo <-> tc_silkinfo: 流复制
+usa_silkinfo --> usa_silkinfo_bak:备库同步延迟3天
+usa_silkinfo --> usa_silkinfo_bak2:备库实时同步
+
+phx_silkinfo -[#white,thickness=0]down- usa_silkinfo_bak2
+
+@enduml

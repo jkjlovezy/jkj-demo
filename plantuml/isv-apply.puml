@@ -1,0 +1,172 @@
+@startuml
+participant 浏览器
+participant 开放平台
+participant sian
+participant DB
+participant OSS
+participant GatewayAdmin
+
+
+浏览器->开放平台:open-3.公私钥生成接口
+
+activate 开放平台
+开放平台->GatewayAdmin:gw-1.公私钥生成接口
+activate GatewayAdmin
+GatewayAdmin->开放平台:返回公私钥
+deactivate GatewayAdmin
+开放平台->浏览器:返回公私钥
+deactivate 开放平台
+
+"浏览器" -> 开放平台: open-1.开发者账号申请接口
+activate 开放平台
+开放平台 -> sian:sian-1.开发者账号申请接口
+activate sian
+sian -> DB:insert db
+DB -> sian:
+sian -> 开放平台:返回申请结果
+deactivate sian
+开放平台 -> "浏览器":返回申请结果
+deactivate 开放平台
+
+浏览器->开放平台:open-2.开发者账号查询接口
+activate 开放平台
+开放平台->sian:sian-2.开发者账号查询接口
+activate sian
+sian->DB:select db
+DB->sian:
+sian->开放平台:返回开发者账号信息
+deactivate sian
+开放平台->浏览器:返回开发者账号信息
+deactivate 开放平台
+
+
+
+浏览器->开放平台:open-4.开发者账号更新接口
+activate 开放平台
+开放平台->sian:sian-3.开发者账号更新接口
+activate sian
+sian-->GatewayAdmin:gw-2.开发者账号更新接口(publicKey、白名单IP、白名单IP开关、禁用状态发生变更时才调用)
+activate GatewayAdmin
+GatewayAdmin-->sian: 返回更新结果
+deactivate GatewayAdmin
+sian->DB:update db
+DB->sian:
+sian->开放平台:返回更新结果
+deactivate sian
+开放平台->浏览器:返回更新结果
+deactivate 开放平台
+
+
+
+alt OSS操作
+"浏览器" -> OSS: oss-1.申请列表接口
+activate OSS
+OSS -> DB: select db
+DB -> OSS:
+OSS -> "浏览器": 返回列表数据
+deactivate OSS
+"浏览器" -> OSS: oss-2.申请详情接口
+activate OSS
+OSS -> sian: sian-2.开发者账号申请查询接口
+activate sian
+sian -> OSS:
+deactivate sian
+OSS -> "浏览器": 返回详情数据
+deactivate OSS
+else 审核通过
+    浏览器->OSS:oss-3.审核接口(通过)
+    activate OSS
+    OSS -> sian: sian-4.开发者账号审核接口(通过)
+    activate sian
+    sian -> "GatewayAdmin": gw-3.开发者账号创建
+    activate "GatewayAdmin"
+    GatewayAdmin -> sian: 返回创建结果
+    deactivate "GatewayAdmin"
+    sian -> DB: update db
+    DB ->sian:
+    sian->OSS:返回审核结果
+    deactivate sian
+    OSS->浏览器:返回审核结果
+    deactivate OSS
+else 审核拒绝
+    浏览器->OSS:oss-3.审核接口(拒绝)
+    activate OSS
+    OSS -> sian: sian-4.开发者账号审核接口(拒绝)
+    activate sian
+    sian -> DB: update db
+    DB -> sian:
+    sian -> OSS:返回审核结果
+    deactivate sian
+    OSS ->浏览器:返回审核结果
+    deactivate OSS
+
+else 启用/禁用/编辑接口
+    浏览器->OSS:oss-4.开发者账号更新接口
+    activate OSS
+    OSS->sian:sian-3.开发者账号更新接口
+    activate sian
+    sian-->GatewayAdmin:gw-2.开发者账号更新接口(publicKey、白名单IP、白名单IP开关、禁用状态发生变更时才调用)
+    activate GatewayAdmin
+    GatewayAdmin-->sian: 返回更新结果
+    deactivate GatewayAdmin
+    sian->DB:update db
+    DB->sian:
+    sian->OSS:返回结果
+    deactivate sian
+    OSS->浏览器:返回结果
+    deactivate OSS
+
+else 新增接口
+    浏览器->OSS:oss-5.开发者账号新增接口
+    activate OSS
+    OSS->sian:sian-1.开发者账号申请接口
+    activate sian
+    sian->GatewayAdmin:gw-3.开发者账号创建接口
+    activate GatewayAdmin
+    GatewayAdmin->sian: 返回创建结果
+    deactivate GatewayAdmin
+    sian->DB:insert db
+    DB->sian:
+    sian->OSS:返回结果
+    deactivate sian
+    OSS->浏览器:返回结果
+    deactivate OSS
+end
+note left
+
+用户在开放平台申请开发者账号，校验逻辑：
+public Result isvApply(){
+	if(exist){
+		if(禁用){
+			return Result.fail("已被禁用") ;
+		}
+
+		if(审核通过){
+			return Result.success();
+		}
+		else if(待审核){
+			return Result.fail("审核中，不能发起申请");
+		}else{
+			if(validate()){
+				updateToPending();
+				return Result.success("申请成功，待审核");
+			}else{
+				return Result.fail("申请失败，参数非法或用户信息校验失败");
+			}
+		}
+	}else{
+		if(validate()){
+			insert();
+			return Result.success("申请成功，待审核");
+		}else{
+			return Result.fail("申请失败，参数非法或用户信息校验失败");
+		}
+	}
+}
+
+
+public boolean validate(){
+	//校验逻辑
+}
+end note
+@enduml

@@ -1,5 +1,6 @@
 package com.study.concurrent.threadpool;
 
+import java.lang.management.ManagementFactory;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -10,18 +11,19 @@ import org.joda.time.DateTime;
 /**
  * ExecutorService.shutdown()  VS ExecutorService.shutdownNow()
  * shutdown() 方法在终止前允许执行以前提交的任务。
- * shutdownNow() 方法阻止等待任务启动并试图停止当前正在执行的任务。
+ * shutdownNow() 尝试停止所有正在执行的任务，停止等待任务的处理，并返回等待执行的任务列表。
  * <p>
  * <p>
- * 若Runnable中，while循环中有Thread.sleep():
+ * 若Runnable中，while循环中有Thread.sleep(),注意是while循环中有sleep:
  * --1.sleep进行catch没有上抛异常：
- * ----ScheduledFuture.cancel() 与 ExecutorService.shutdownNow() 都不能终止该Runnable线程。
- * --2.sleep的异常catch后转化为RuntimeException，进行上抛：
- * ----ScheduledFuture.cancel() 与 ExecutorService.shutdownNow() 可以终止该Runnable线程。ExecutorService.shutdown()不能终止该Runnable线程。
+ * ----ScheduledFuture.cancel(true) 与 ExecutorService.shutdownNow() 都不能终止该Runnable线程。 原因是线程没有执行结束，继续while循环
+ * --2.sleep上抛异常，退出while循环：
+ * ----ScheduledFuture.cancel(true) 与 ExecutorService.shutdownNow() 可以终止该Runnable线程。ScheduledFuture.cancel(false)与ExecutorService.shutdown()不能终止该Runnable线程。
  */
 public class ScheduledFutureTest2 {
 
     public static void main(String[] args) {
+        System.out.println(ManagementFactory.getRuntimeMXBean().getName());
 //        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor(
 //                runnable -> new Thread(runnable, "thread_prefix")
 //        );
@@ -31,46 +33,46 @@ public class ScheduledFutureTest2 {
         ScheduledFuture scheduledFuture = scheduledExecutorService.scheduleAtFixedRate(
                 new RunnableWithExceptionProtection(
                         () -> {
-                            int i=0;
-//                            while (true) {
-//                                ThreadUtil.sleep(1000L);
-////                                if(i++%10000==0)
-//                                System.out.println(Thread.currentThread().getId() + "-run-" + DateTime.now().toString("HH:mm:ss"));
-//                            }
-
-                                ThreadUtil.sleep(1000L);
-//                                if(i++%10000==0)
+                            while (true) {
+                                mockRemoteCall(1000L);
                                 System.out.println(Thread.currentThread().getId() + "-run-" + DateTime.now().toString("HH:mm:ss"));
+                            }
                         },
                         t -> System.out.println("log unexpected exception." + t)
-                ), 0, 2,
+                        /*t -> {
+                            throw new RuntimeException(t);
+                        }*/
+                ), 0, 10,
                 TimeUnit.SECONDS
         );
-
-        /*ThreadUtil.sleep(10000L);*/
-        /*System.out.println("-shutdown-" + DateTime.now().toString("HH:mm:ss"));*/
-        /*scheduledExecutorService.shutdown();*/
-
-        /*scheduledExecutorService.shutdownNow();*/
-
-        ThreadUtil.sleep(2000L);
-        System.out.println("-cancel-" + DateTime.now().toString("HH:mm:ss"));
-        System.out.println("\n\n\n\n\n");
-//        scheduledFuture.cancel(true);
-        ThreadUtil.sleep(10000L);
-        System.out.println("-over-" + DateTime.now().toString("HH:mm:ss"));
+        delayCall(5L, () -> scheduledFuture.cancel(true));
+        //delayCall(5L, () -> scheduledFuture.cancel(false));
+         delayCall(5L, () -> scheduledExecutorService.shutdownNow());
+        //delayCall(5L, () -> scheduledExecutorService.shutdown());
     }
 
-    public static class ThreadUtil {
-        public static void sleep(long millis) {
-            try {
-                Thread.sleep(millis);
-            } catch (Exception e) {
-//                throw new RuntimeException("interrupt exception");
-            }
+    static void delayCall(Long seconds, Runnable runnable) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+            System.out.println("-delayCall-" + DateTime.now().toString("HH:mm:ss"));
+            runnable.run();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
+
+
+    public static void mockRemoteCall(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("interrupt exception");
+        }
+    }
+
+
 }
 
 

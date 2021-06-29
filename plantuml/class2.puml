@@ -1,0 +1,18 @@
+@startuml
+interface IProductOperateService
+ProductServiceImpl *-- IProductOperateService
+IProductOperateService <|-- GigaProductOperateServiceImpl
+IProductOperateService <|-- JdProductOperateServiceImpl
+
+ProductServiceImpl : IProductOperateServiceFactory factory
+ProductServiceImpl : syncRemoteStock()
+ProductServiceImpl : syncRemotePrice()
+
+IProductOperateService : abstract CustomStockInfo queryRemoteStock()
+IProductOperateService : abstract CustomPriceInfo queryRemotePrice()
+GigaProductOperateServiceImpl : CustomStockInfo queryRemoteStock()
+GigaProductOperateServiceImpl : CustomPriceInfo queryRemotePrice()
+
+JdProductOperateServiceImpl : CustomStockInfo queryRemoteStock()
+JdProductOperateServiceImpl : CustomPriceInfo queryRemotePrice()
+@enduml

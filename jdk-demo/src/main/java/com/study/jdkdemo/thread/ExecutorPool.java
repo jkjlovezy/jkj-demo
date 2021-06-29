@@ -7,15 +7,15 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public enum ConcurrentExecutor {
+public enum ExecutorPool {
     mmPool {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(200));
         {
             threadPoolExecutor.allowsCoreThreadTimeOut();
         }
 
-        public <T> List<Future<T>> submit(List<Callable<T>> callableList) throws InterruptedException {
-            return threadPoolExecutor.invokeAll(callableList, 10, TimeUnit.SECONDS);
+        public <T> List<Future<T>> submit(List<Callable<T>> callableList, long timeout, TimeUnit timeUnit) throws InterruptedException {
+            return threadPoolExecutor.invokeAll(callableList, timeout, timeUnit);
         }
 
         public void shutdown() {
@@ -23,7 +23,7 @@ public enum ConcurrentExecutor {
         }
     };
 
-    public <T> List<Future<T>> submit(List<Callable<T>> callableList) throws InterruptedException {
+    public <T> List<Future<T>> submit(List<Callable<T>> callableList, long timeout, TimeUnit timeUnit) throws InterruptedException {
         throw new AbstractMethodError();
     }
 

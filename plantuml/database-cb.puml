@@ -1,0 +1,35 @@
+@startuml
+title CB数据库网络拓扑
+card tc机房{
+    database phx_cb_bak [
+       phx_cb_bak
+       ===
+       192.168.7.5
+    ]
+}
+
+card phx机房{
+    database phx_cb[
+        phx_cb
+        ===
+        10.1.3.35
+        ---
+        10.1.3.36
+    ]
+
+}
+
+card usa机房{
+    database usa_cb [
+        usa_cb
+        ===
+        172.24.16.113
+        ---
+        172.24.16.114
+    ]
+}
+
+phx_cb -left-> phx_cb_bak: 备库实时同步
+phx_cb <-> usa_cb: 流复制
+
+@enduml

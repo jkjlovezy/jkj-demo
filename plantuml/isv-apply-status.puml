@@ -1,0 +1,10 @@
+@startuml
+scale 600 width
+
+[*] -> Pending
+Pending --> Rejected : 拒绝
+Pending --> Approved: 通过
+Rejected --> Pending: 用户编辑
+Approved --> [*]
+
+@enduml

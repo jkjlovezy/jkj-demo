@@ -1,0 +1,42 @@
+@startuml
+title silkord数据库网络拓扑
+card phx机房{
+    database phx_silkord[
+        phx_silkord
+        ===
+        10.1.4.80
+        ---
+        10.1.4.82
+    ]
+}
+
+card usa机房{
+    database usa_silkord [
+        usa_silkord
+        ===
+        172.24.16.123
+        ---
+        172.24.16.124
+    ]
+    database usa_silkord_bak [
+       usa_silkord_bak
+       ===
+       172.24.16.116
+    ]
+}
+
+card tc机房{
+    database tc_silkord [
+        tc_silkord
+        ===
+        192.168.4.80
+        ---
+        192.168.4.82
+    ]
+}
+
+phx_silkord <-> usa_silkord: 流复制
+phx_silkord <-> tc_silkord: 流复制
+usa_silkord <-> tc_silkord: 流复制
+usa_silkord --> usa_silkord_bak: 备库同步延迟3天
+@enduml

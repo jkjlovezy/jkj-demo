@@ -1,0 +1,11 @@
+@startuml
+AbstractProductServiceImpl <|-- GigaProductOperateServiceImpl
+AbstractProductServiceImpl <|-- JdProductOperateServiceImpl
+
+AbstractProductServiceImpl : protected abstract compareWithRemoteStock()
+AbstractProductServiceImpl : protected abstract compareWithRemotePrice()
+GigaProductOperateServiceImpl : compareWithRemoteStock()
+GigaProductOperateServiceImpl : compareWithRemotePrice()
+JdProductOperateServiceImpl : compareWithRemoteStock()
+JdProductOperateServiceImpl : compareWithRemotePrice()
+@enduml
