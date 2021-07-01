@@ -10,5 +10,8 @@ public class JoiningTest {
         List<String> list2 = Arrays.asList("aaa");
         System.out.println(list.stream().collect(Collectors.joining(" -> ")));
         System.out.println(list2.stream().collect(Collectors.joining(" -> ")));
+
+        String s = "1,2,3";
+
     }
 }

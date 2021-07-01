@@ -9,6 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <properties>
     <fastjson.version>1.2.61</fastjson.version>
+    <javasist.version>3.23.1-GA</javasist.version>
   </properties>
 
   <dependencies>
@@ -29,6 +30,12 @@
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
       <version>${fastjson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>${javasist.version}</version>
     </dependency>
   </dependencies>
   <build>

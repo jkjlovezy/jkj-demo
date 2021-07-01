@@ -17,5 +17,6 @@ public class MathTest {
         System.out.println(M1_ALPHA);
         System.out.println(M5_ALPHA);
         System.out.println(M15_ALPHA);
+        System.out.println(exp(4));
     }
 }
